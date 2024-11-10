@@ -11,6 +11,23 @@
             margin-top: 2vh;
             margin-left: 18vh;
         }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            border: 2px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .toggle-btn:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
@@ -44,6 +61,18 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
+
+        const buttons = document.querySelectorAll('.toggle-btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                
+                button.classList.add('active');
+            });
+        });
     </script>
     </div>
 </body>
