@@ -1,7 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text File Generator</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>Download Your Text as a File</h1>
+    <textarea id="textInput" rows="10" cols="50" placeholder="Enter your text here..."></textarea>
+    <br><br>
+    <button onclick="downloadTextFile()">Download Text File</button>
+
+    <script>
+        function downloadTextFile() {
+            const text = document.getElementById("textInput").value;
+            const blob = new Blob([text], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "your_text.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>
